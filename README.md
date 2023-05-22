@@ -18,7 +18,7 @@ Tools > NuGet Package Manager > Package Manager Console and execute:
 
 Fix EFCore auto-generated Bug in migration files:
 
-![image](https://github.com/larry-noriega/EFCoreSQLite.Generic.DBContext/assets/4468105/7f813755-736b-4925-a4a5-85b3471d6b73)
+![image](https://github.com/larry-noriega/EFCoreSQLite.Generic.DBContext/assets/4468105/2f7feb61-6f97-43ca-937e-9351d842871c)
 
 `> Update-Database`
 
