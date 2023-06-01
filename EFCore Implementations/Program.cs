@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("default");
 
 //Migration DB Purposes
-builder.Services.AddDbContext<GenericDBContext<WeatherForecast>>(options => options.UseSqlite(connectionString));
+builder.Services.AddDbContext<GenericDBContext<WeatherForecast>>();
 
 // Set up Database
 builder.Services.Configure<SQLiteSettings>(options => { options.ConnectionString = connectionString; });

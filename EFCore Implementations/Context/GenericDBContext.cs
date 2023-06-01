@@ -22,21 +22,19 @@ namespace EFCore_Implementations.Context
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			if (_options is null) throw new ArgumentNullException("Invalid settings", nameof(SQLiteSettings));
+			base.OnConfiguring(optionsBuilder);
 
-			string? connectionString = _options.Value.ConnectionString ??
-					throw new ArgumentNullException("Invalid settings", nameof(_options.Value.ConnectionString));
+			if (_options is null)
+				throw new ArgumentNullException("Invalid settings", nameof(_options.Value.ConnectionString));
 
-			optionsBuilder.EnableSensitiveDataLogging(true);
-
-			optionsBuilder.UseSqlite(connectionString);
+			optionsBuilder.UseSqlite(_options.Value.ConnectionString);
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			EntityTypeBuilder<TClass>? model = modelBuilder.Entity<TClass>();			
 
-			modelBuilder.Entity<TClass>().ToTable(model.Metadata.ClrType.Name);
+			modelBuilder.Entity<TClass>().ToTable(model.Metadata.ClrType.Name.ToLower());
 		}
 	}
 }

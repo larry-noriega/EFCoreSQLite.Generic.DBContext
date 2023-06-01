@@ -16,6 +16,6 @@ namespace EFCore_Implementations.Entities
 
 
         public int? CityId { get; set; }
-        public City? City { get; set; }
+        public City? City { get; set; } = new();
     }
 }
